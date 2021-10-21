@@ -1,50 +1,168 @@
-* {
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap");
 
-body {
-  display: flex;
-  height: 100vh;
+/* Estil basic de la pàgina que es aplicat a tota la pàgina. */
+.basic-design {
   margin: 0;
-  padding: 2rem;
-  font-family: $font-family-sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: $uoc-bg;
-  color: $uoc-corporate;
+  font-size: 1.2rem;
+  font-family: $font-family-montserrat;
+  line-height: 1.5em;
+  background: $background-color;
 }
 
-.uoc-container {
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+/* Capçalera. Definim l'estructura i l'estil de la capcalera de la nostre pàgina */
+.capcalera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 3px solid;
 }
-
-.uoc-logo {
-  display: block;
-  margin-left: auto;
+/* Definim la imatge de fons de la capçalera i les seves propietats */
+.capcalera-background-img {
+  background-image: $background-image;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*Estil del títol de la cpçalera */
+.capcalera-title {
+  color: $title-color;
+  font-size: 3rem;
+}
+/*Ajustem la capçalera per mides mes grans que movils */
+@media (min-width: 992px) {
+  .capcalera {
+    padding-bottom: 7vh;
+  }
+  .capcalera-title {
+    margin-top: 5rem;
+  }
+}
+/* 
+*Definim l'estructuracio de la nostre pantalla. 
+*Container ho agafa tot excepte la capçalera. 
+*/
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   margin-right: auto;
-  margin-bottom: 1.5rem;
-  max-width: 200px;
-  height: auto;
-
-  @media (min-width: $mqMinWidth) {
-    max-width: 350px;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+/*Ajustem el width del nostre contenidor principal per diferents dispositius*/
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+/*Donem els marges sup. i inf. del contenidor que engloba tota la informació*/
+.gridContainerCV {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+/*
+*En cas que el Grid que engloba tota la informacio, no sigui un movil.
+* Fem que la seva estructura sigu de tipus Grid i es divideixi en dos columnes
+*/
+@media (min-width: 1200px) {
+  .gridContainerCV {
+    display: grid;
+    grid-template-columns: 30% auto;
+    column-gap: 50px;
+  }
+}
+/*Definim l'estructrua de la part de la columne dreta del CV.*/
+.menu-cv-dreta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/*Definim que s'alini l'estructrua de la part de la columne dreta del CV a l'esquerra en cas de que no sigui un dispositiu mobil.*/
+@media (min-width: 992px) {
+  .menu-cv-dreta {
+    text-align: left;
+  }
+}
+/*Definim l'estructrua de la part de la columne esquerra del CV.*/
+.menu-cv-esquerra {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  background-color: $background-menu-cv-esquerra;
+  border-radius: 25px;
+}
+/*Definim  l'amplada i l'estil per la foto de perfil que trobem en la columne esquerra de la nostre pàgina*/
+.profile-image {
+  width: 15rem;
+  border-radius: 150px;
+}
+/*Definim que s'alini l'estructrua de la part de la columne esquerra del CV a l'esquerra en cas de que no sigui un dispositiu mobil.*/
+@media (min-width: 1200px) {
+  .menu-cv-esquerra {
+    text-align: left;
+    border-right: 1px grey solid;
+  }
+}
+/*Aquesta classe serveix per centrar un contenidor. En el meu cas l'utilitzem en la foto de perfil*/
+.centar-alignment {
+  margin-top: 1rem;
+  text-align: center;
+}
+.padding-left {
+  padding-left: 1rem;
+}
+/* Definim l'estil del objecte subtitol del nostre CV que utilizem per diferenciar els diferents continguts d'ell */
+.subtitle {
+  margin-right: 1rem;
+  font-weight: bolder;
+  font-size: larger;
+  border-bottom: 1px solid black;
+}
+/* Definim l'estil del objecte subtitol de l'experiencia profesional */
+.subtitle-pro-exp {
+  font-weight: bolder;
+  font-size: medium;
+}
+.small-font {
+  font-size: small;
+}
+.span-no-bolder span {
+  font-weight: normal;
+}
+.none-style {
+  li {
+    margin-left: -40px;
+    list-style-type: none;
+  }
+  li span {
+    font-size: small;
+    font-style: italic;
+  }
+}
+@media (min-width: 1200px) {
+  .none-style li {
+    margin-left: 0px;
   }
 }
 
-.uoc-title {
-  font-family: $font-family-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: $uoc-corporate;
-
-  @media (min-width: $mqMinWidth) {
-    font-size: 36px;
-  }
+.circle-style {
+  list-style-type: circle;
+}
+.cursive {
+  font-style: italic;
 }
